@@ -40,6 +40,13 @@
 typedef struct tiff TIFF;
 
 /*
+ * Jeremiah def
+ */
+//extern struct tiff TIFF;
+	
+
+
+/*
  * The following typedefs define the intrinsic size of
  * data types used in the *exported* interfaces.  These
  * definitions depend on the proper definition of types
@@ -414,6 +421,11 @@ extern int TIFFWriteCustomDirectory(TIFF *, uint64 *);
 extern int TIFFCheckpointDirectory(TIFF *);
 extern int TIFFRewriteDirectory(TIFF *);
 
+// Jeremiah additions
+extern void TIFFSetTiledOn(TIFF*);
+extern void TIFFSetTiledOff(TIFF*);	
+extern int TIFFIsBigTIFF(TIFF*);
+	
 #if defined(c_plusplus) || defined(__cplusplus)
 extern void TIFFPrintDirectory(TIFF*, FILE*, long = 0);
 extern int TIFFReadScanline(TIFF* tif, void* buf, uint32 row, uint16 sample = 0);

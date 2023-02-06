@@ -581,6 +581,29 @@ TIFFIsTiled(TIFF* tif)
 }
 
 /*
+ * Set tile flag to off.
+ * Jeremiah addition
+ */
+void TIFFSetTiledOff(TIFF* tif)
+{
+	tif->tif_flags &= ~TIFF_ISTILED;
+	return;
+}
+
+/*
+ * Set tile flag to on.
+ * Jeremiah addition
+ */
+void
+TIFFSetTiledOn(TIFF* tif)
+{
+	tif->tif_flags |= TIFF_ISTILED;
+	return;
+}
+
+
+
+/*
  * Return current row being read/written.
  */
 uint32
@@ -624,6 +647,17 @@ TIFFIsByteSwapped(TIFF* tif)
 {
 	return ((tif->tif_flags & TIFF_SWAB) != 0);
 }
+
+/*
+ * Return nonzero if the file is Big tiff
+ * Jeremiah addition
+ */
+int
+TIFFIsBigTIFF(TIFF* tif)
+{
+	return ((tif->tif_flags & TIFF_BIGTIFF) != 0);
+}
+
 
 /*
  * Return nonzero if the data is returned up-sampled.
